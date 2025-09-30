@@ -1,0 +1,17 @@
+# Visual Studio cache/settings
+.vs/
+*.user
+*.suo
+
+# Build outputs
+bin/
+obj/
+Debug/
+Release/
+
+# OS noise
+Thumbs.db
+Desktop.ini
+
+# Other temporary files
+*.log
