@@ -1,0 +1,84 @@
+﻿body
+{
+    color:white;
+}
+header{
+    background-color:brown;
+}
+.navbar-top,.nav-left,.nav_right,.navbar-list{ /*top    -< left, rigght*/
+    background-color=red;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between; /*căn đều nd*/
+    align-items:center;
+}
+.nav_left {
+    height:6vw;
+    margin-left:2vw;
+    margin-top:1vw;
+}
+.box-img{
+    height:6vw;
+
+}
+img {
+    width:100%;/*width:100%
+        height:100%
+    */
+    height:100%;
+}
+
+.nav_right {
+    margin-right:2vw;
+    margin-top:1vw;
+
+
+
+}
+.navbar-list{
+    margin-top:1vw;
+
+}
+ul{
+    list-style:none;
+}
+a {
+    text-decoration:none;
+    color:white;
+}
+
+
+.main-left{
+    width:20vw;
+    margin-left:5vw;
+    margin-top:1vw;
+    position:relative;
+    background-color:red;
+    border-radius:20px;
+    box-shadow:0 2px 5px rgb(128, 128, 128);
+    overflow:hidden
+
+}
+
+
+.background{
+    position: relative;
+}
+
+.avatar{
+    position:absolute;
+    transform: translate(-50%,-50%);
+    left:50%;
+}
+.avatar img{
+    border-radius:50%;
+    width:7vw;
+    object-fit:cover;
+
+}
+
+.card-body{
+    margin-top:4vw;
+
+
+}
