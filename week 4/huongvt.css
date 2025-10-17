@@ -1,0 +1,142 @@
+/* === User's base rules (kept at the top, with minimal fixes) === */
+body {
+    color: white;
+}
+header {
+    background-color: brown;
+}
+/* top – left, right */
+.navbar-top, .nav-left, .nav_left, .nav_right, .navbar-list {
+    background-color: red; /* fixed '=' → ':' */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* căn đều nội dung */
+    align-items: center;
+}
+.nav_left {
+    height: 6vw;
+    margin-left: 2vw;
+    margin-top: 1vw;
+}
+.box-img {
+    height: 6vw;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+.nav_right {
+    margin-right: 2vw;
+    margin-top: 1vw;
+}
+.navbar-list {
+    margin-top: 1vw;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.main-left {
+    width: 20vw;
+    margin-left: 5vw;
+    margin-top: 1vw;
+    position: relative;
+    background-color: red;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgb(128, 128, 128);
+    overflow: hidden;
+}
+.background { position: relative; }
+.avatar { position: absolute; transform: translate(-50%, -50%); left: 50%; }
+.avatar img { border-radius: 50%; width: 7vw; object-fit: cover; }
+.card-body { margin-top: 4vw; }
+
+/* === Additions to resemble the reference layout (no image/font changes) === */
+
+/* Frame the overall navbar like the reference */
+#navbar { width: 100%; }
+#navbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+}
+.box-small {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+.box-title { font-weight: 600; }
+.box-des { opacity: 0.9; }
+.box-icon-container { width: 64px; height: 64px; }
+.box-icon-container img, .box-icon { width: 100%; height: 100%; object-fit: contain; }
+
+/* Horizontal nav links like the reference */
+nav.navbar-list { border-top: 1px solid rgba(255,255,255,0.25); }
+nav.navbar-list ul { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; padding: 0.5rem 1rem; }
+nav.navbar-list a { padding: 0.25rem 0.5rem; display: inline-block; }
+
+/* Current path placeholder */
+#navbar-current-path { height: 8px; }
+
+/* Body two-column feel like the reference */
+.web-body { display: flex; gap: 1rem; padding: 1rem; }
+
+/* Card scaffold to mirror reference blocks */
+.card {
+    position: relative;
+    background: rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1rem;
+}
+.card + .card { margin-top: 1rem; }
+
+/* Card background image slot */
+.card-background-container { position: relative; width: 100%; height: 22vw; max-height: 320px; overflow: hidden; }
+.card-background { width: 100%; height: 100%; object-fit: cover; }
+
+/* Avatar in user card (circular with white border like reference) */
+#card-user-info .avatar {
+    position: absolute; 
+    top: 10vw; 
+    left: 2vw;
+    transform: none;
+    width: 10vw; 
+    height: 10vw; 
+    border-radius: 50%;
+    border: 0.3vw solid white;
+    overflow: hidden;
+}
+#card-user-info .avatar img { width: 100%; height: 100%; object-fit: cover; }
+#card-user-info .card-body { margin-top: 5vw; }
+#card-user-info ul li { margin: 0.25rem 0; }
+
+/* Secondary card header tabs (visual only; no JS) */
+#card-more-info .navbar-list ul,
+#card-management-info .navbar-list ul { display: flex; gap: 1rem; padding: 0.5rem 0; }
+#card-more-info .navbar-list a,
+#card-management-info .navbar-list a { padding: 0.25rem 0.5rem; }
+#card-more-info .navbar-list a.active,
+#card-management-info .navbar-list a.active { text-decoration: underline; }
+
+/* Text block groupings */
+.text-block-body { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1rem; }
+.text-bold { font-weight: 600; }
+#cmi-lylich h4 { margin: 0.5rem 0; }
+
+/* Right-side management card spacing similar to reference */
+#card-management-info { flex: 1; }
+
+/* Chart placeholders spacing */
+#my-chart { padding: 0 10%; display: flex; justify-content: space-between; gap: 10px; }
+#chart-learning, #chart-training { width: 49%; margin: 35px auto; min-height: 300px; }
+
+/* Footer spacer */
+#footer { height: 40px; }

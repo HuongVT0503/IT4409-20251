@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>HUST Student Portal</title>
+    <link href="huongvt.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="navbar">
+        <div id="navbar-top">
+            <div class="box-small" id="navbar-top-item-left">
+                <div class="box-title">ĐẠI HỌC BÁCH KHOA HÀ NỘI</div>
+                <div class="box-des">Cổng thông tin sinh viên</div>
+                <div class="box-icon-container">
+                    <img src="logohust.png" alt="logobkhn" width="10">
+                </div>
+            </div>
+            <div class="box-small" id="navbar-top-item-right">
+                <div class="box-title">Xin chào</div>
+                <div class="box-des">Sinh viên: Vũ Thúy Hường</div>
+                <div class="box-icon-container">
+                    <img class="box-icon" src="10done.png" alt="avatar" width="100">
+                </div>
+            </div>
+        </div>
+        <nav class="navbar-list">
+            <ul>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Trang chủ</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Hướng nghiệp</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Học bổng</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Chấm điểm</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Hành chính</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Q&A</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Hồ sơ</a>
+                </li>
+                <li>
+                    <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-basic-css-by-building-a-cafe-menu/step-24">Nhập học</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="navbar-current-path"></div>
+    </div>
+
+    <!-- WEB BODY (cards structure aligned to the reference) -->
+    <div class="web-body">
+        <div>
+            <!-- CARD: User Info -->
+            <div class="card" id="card-user-info">
+                <div class="card-background-container">
+                    <img class="card-background" src="logo-hust.png" alt="backgr pic">
+                </div>
+                <!-- Avatar (circle styling to be done in CSS later) -->
+                <div class="avatar">
+                    <img src="logo-hust.png" alt="avatar pic">
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>MS: 20225135</li>
+                        <li>Họ tên: Vũ Thúy Hường</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CARD: More Info (tabs header only; behavior to be added later) -->
+            <div class="card" id="card-more-info">
+                <div class="navbar-list">
+                    <ul>
+                        <li><a class="active">Trạng thái</a></li>
+                        <li><a>Quản lý</a></li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div id="trangthai">
+                        <div class="text-block-body">
+                            <div>
+                                <p>Trạng thái học tập: Học</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD: Management Info -->
+        <div class="card" id="card-management-info">
+            <div class="navbar-list">
+                <ul>
+                    <li><a class="active">Lý lịch</a></li>
+                    <li><a>Quyết định</a></li>
+                    <li><a>Khen thưởng</a></li>
+                    <li><a>Liên hệ</a></li>
+                    <li><a>Nhận xét</a></li>
+                    <li><a>Hoạt động tham gia</a></li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div id="cmi-lylich">
+                    <div>
+                        <div>
+                            <h4>Thông tin cá nhân</h4>
+                            <div class="text-block-body">
+                                <div>
+                                    <p>Ngày sinh:</p>
+                                    <p>Số CMTND:</p>
+                                    <p>Dân tộc:</p>
+                                    <p>Ngày vào Đoàn:</p>
+                                </div>
+                                <div>
+                                    <p>Nơi sinh:</p>
+                                    <p>Nơi cấp:</p>
+                                    <p>Tôn giáo:</p>
+                                    <p>Ngày vào Đảng:</p>
+                                </div>
+                                <div>
+                                    <p>Giới tính:</p>
+                                    <p>Ngày cấp:</p>
+                                    <p>Chi đoàn:</p>
+                                    <p>Đoàn viên</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-block-body">
+                            <div>
+                                <p>Đối tượng chính sách:</p>
+                                <p>Số thẻ bảo hiểm:</p>
+                                <p>Địa chỉ thường trú:</p>
+                                <p>Nơi ở hiện tại:</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Thông tin gia đình</h4>
+                            <div>
+                                <div>
+                                    <div class="text-block-body text-bold">
+                                        <p>Họ và tên bố:</p>
+                                    </div>
+                                    <div class="text-block-body">
+                                        <div>
+                                            <p>Dân tộc:</p>
+                                            <p>Nơi làm việc:</p>
+                                            <p>Địa chỉ thường trú:</p>
+                                            <p>Liên hệ:</p>
+                                        </div>
+                                        <div>
+                                            <p>Năm sinh:</p>
+                                            <p>Tôn giáo:</p>
+                                        </div>
+                                        <div>
+                                            <p>Quốc tịch:</p>
+                                            <p>Nghề nghiệp:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-block-body text-bold">
+                                <p>Họ và tên mẹ:</p>
+                            </div>
+                            <div class="text-block-body">
+                                <div>
+                                    <p>Dân tộc:</p>
+                                    <p>Nơi làm việc:</p>
+                                    <p>Địa chỉ thường trú:</p>
+                                    <p>Liên hệ:</p>
+                                </div>
+                                <div>
+                                    <p>Năm sinh:</p>
+                                    <p>Tôn giáo:</p>
+                                </div>
+                                <div>
+                                    <p>Quốc tịch:</p>
+                                    <p>Nghề nghiệp:</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-block-body text-bold">Thông tin người thân khác:</div>
+                    <div class="text-block-body text-bold">
+                        <div>Thuộc hộ:</div>
+                        <div>Số sổ:</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHART PLACEHOLDERS (structure only; no scripts/styles yet) -->
+    <div id="my-chart">
+        <div id="chart-learning"></div>
+        <div id="chart-training"></div>
+    </div>
+
+    <div id="footer"></div>
+</body>
+</html>
