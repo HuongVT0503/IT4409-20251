@@ -9,7 +9,7 @@
 
 <body>
     <div class="wrap">
-        <h1>Async Workflow Demo</h1>
+        <h1>Ex 4</h1>
         <p class="desc">
             Click "Get user", then "Get posts", then "Get post detail".
         </p>
@@ -150,7 +150,7 @@
                     const btn = e.target.closest(".user-btn");//e.target.closest()->nearest ancestor of an element (including the element itself) that matches a specified CSS selector
                     if (!btn) return;
                     const userId = Number(btn.dataset.userId);
-                    log(`Gọi getPosts với userId=${userId}`);
+                    log(`Call getPosts with userId=${userId}`);
                     handleGetPosts();
                 });
 
@@ -159,7 +159,7 @@
                     const btn = e.target.closest(".post-btn");
                     if (!btn) return;
                     const postId = Number(btn.dataset.postId);
-                    log(`Gọi getPostDetail với postId=${postId}`);
+                    log(`Call getPostDetail with postId=${postId}`);
                     handleGetPostDetail(postId);
                 });
 
