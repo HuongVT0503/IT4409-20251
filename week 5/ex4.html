@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ex4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>Async Workflow Demo</h1>
+        <p class="desc">Fetch a user, then their posts, then any post’s detail. Click a post to view its detail again.
+        </p>
+
+        <div class="toolbar">
+            <button id="run" type="button">Run demo</button>
+            <button id="clear" class="secondary" type="button">Clear log</button>
+        </div>
+
+        <div class="cols">
+            <div class="panel">
+                <h2>Posts</h2>
+                <div id="posts"><em>No posts yet.</em></div>
+            </div>
+
+            <div class="panel">
+                <h2>Log</h2>
+                <div id="log" aria-live="polite"></div>  <!--log-->
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function getUser() {
+            log("Bước 1. Gọi getUser()");
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const user = { id: 1, name: "Lam" };
+                    log("User: " + user.name);
+                    resolve(user);
+                }, 400);
+            });
+        }
+
+        function getPosts(userId) {
+            log("Bước 2. Gọi getPosts(" + userId + ")");
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const posts = [
+                        { id: 101, title: "Post A" },
+                        { id: 102, title: "Post B" },
+                    ];
+                    log("Posts: " + posts.map((p) => p.title).join(", "));
+                    resolve(posts);
+                }, 400);
+            });
+        }
+
+        function getPostDetail(postId) {
+            log("Bước 3. Gọi getPostDetail(" + postId + ")");
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const detail = { id: postId, title: "Chi tiết bài viết " + postId };
+                    log("Detail: " + detail.title);
+                    resolve(detail);
+                }, 400);
+            });
+        }
+
+        function log(msg) {     //add to the log
+            const logbox = document.getElementById("log");
+            const p = document.createElement("p");
+            const timestamp = new Date().toLocaleTimeString();
+            p.textContent = timestamp + ": " + msg;
+            logbox.prepend(p);  //add new log to the top
+        }
+
+        function clearLog() {
+            const logbox = document.getElementById("log");
+            logbox.innerHTML = "";
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
