@@ -34,3 +34,5 @@ Sinh viên nộp 04 tệp sau:
 + Ảnh chụp giao diện web, mã nguồn minh họa và thông tin máy tính
 + Tệp mô tả (.txt hoặc .md) – giải thích cấu trúc mã nguồn, cách xử lý bất đồng bộ, và quy trình làm
 + Ảnh chụp kết quả học tập thật của mình để đối chiếu.
+
+

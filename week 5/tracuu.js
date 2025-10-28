@@ -21,7 +21,9 @@
 //     }
 // }
 
-
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 function grading(score) {
     if (score >= 9) return "A+";
     if (score >= 8.5) return "A";
@@ -41,6 +43,7 @@ async function loaddata() {
             fetch("hocphan.json"),
             fetch("ketqua.json"),
         ]);
+        await wait(3000);//DELAY
 
         const [sinhvien, hocphan, ketqua] = await Promise.all([
             svRes.json(),
@@ -76,6 +79,7 @@ async function tracuu(sid) {
 }
 
 function handletracuu(sid) {
+    //localStorage.clear();
     
 
     const cacheKey = `kq_${sid}`;  //kq_20225135 //"kq_"+sid
@@ -127,13 +131,16 @@ function handletracuu(sid) {
                     //const letter = (ketqua.grade && ketqua.grade.trim() !== "") ? ketqua.grade : grading(numericscore);
                     const scorelettter=grading(ketqua.score);
 
+                    const graded = ketqua.grade && ketqua.grade.trim() !== "";
+                    ketqua.grade = graded ? ketqua.grade : scorelettter;
+
                     const rowData = {
                         cid: hocphan.cid,
                         name: hocphan.name,
                         credits: hocphan.credits,
                         term: ketqua.term,
                         score: ketqua.score,
-                        grade: ketqua.grade ?? scorelettter
+                        grade: ketqua.grade
                     };
                     cachedData.push(rowData);
 
@@ -145,7 +152,7 @@ function handletracuu(sid) {
                     <td>${hocphan.credits}</td>
                     <td>${ketqua.term}</td>
                     <td>${ketqua.score}</td>
-                    <td>${ketqua.grade ?? scorelettter}</td>
+                    <td>${ketqua.grade}</td>
                 `;
                     table.appendChild(row);
                 }

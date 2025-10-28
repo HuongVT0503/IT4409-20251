@@ -1,7 +1,22 @@
 [
-    {
-        "cid": "IT4409",
-        "name": "Lập trình web",
-        "credits": 3
-    }
+  { "cid": "EM1010", "name": "Quản trị học đại cương", "credits": 2 },
+  { "cid": "IT3011", "name": "Cấu trúc dữ liệu và thuật toán", "credits": 2 },
+  { "cid": "IT3040", "name": "Kỹ thuật lập trình", "credits": 2 },
+  { "cid": "IT3080", "name": "Mạng máy tính", "credits": 3 },
+  { "cid": "IT3090", "name": "Cơ sở dữ liệu", "credits": 3 },
+  { "cid": "IT4172", "name": "Xử lý tín hiệu", "credits": 2 },
+  { "cid": "IT4593", "name": "Nhập môn kỹ thuật truyền thông", "credits": 2 },
+  { "cid": "MI1111", "name": "Giải tích I", "credits": 4 },
+  { "cid": "PE2251", "name": "Taekwondo 1", "credits": 0 },
+  { "cid": "PE2261", "name": "Karatedo", "credits": 0 },
+  { "cid": "IT3070", "name": "Nguyên lý hệ điều hành", "credits": 3 },
+  { "cid": "IT3120", "name": "Phân tích và thiết kế hệ thống", "credits": 2 },
+  { "cid": "IT3150", "name": "Project I", "credits": 2 },
+  { "cid": "IT3170", "name": "Thuật toán ứng dụng", "credits": 2 },
+  { "cid": "IT3180", "name": "Nhập môn công nghệ phần mềm", "credits": 3 },
+  { "cid": "IT4015", "name": "Nhập môn an toàn thông tin", "credits": 3 },
+  { "cid": "IT4060", "name": "Lập trình mạng", "credits": 2 },
+  { "cid": "IT4785", "name": "Phát triển ứng dụng cho thiết bị di động", "credits": 2 },
+  { "cid": "MI2010", "name": "Phương pháp tính", "credits": 2 },
+  { "cid": "MI1121", "name": "Giải tích II", "credits": 3 }
 ]
