@@ -54,7 +54,7 @@ async function loaddata() {
         return { sinhvien, hocphan, ketqua };
     } catch (error) {
         console.error(error);
-        throw error; // rethrow so callers can handle
+        throw error; //rethrow the error-> the func that called it can handle the eror -> prevent silent error
     }
 }
 
@@ -75,6 +75,7 @@ async function tracuu(sid) {
         return { ketquatable, ketquahientai };
     } catch (error) {
         console.log(error);
+        throw error;
     }
 }
 
@@ -106,6 +107,7 @@ function handletracuu(sid) {
             return;
         } catch (e) {
             console.log(e);
+            throw e;
         }
     }
 
@@ -162,6 +164,7 @@ function handletracuu(sid) {
         })
         .catch(error => {
             console.log(error);
+            
         });
 }
 
