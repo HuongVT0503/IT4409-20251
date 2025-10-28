@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tra cuu ket qua hoc tap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="tracuu.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Tra cứu kết quả học tập</h1>
+    </header>
+
+    <main>
+        <form>
+            <label for="sid">Mã số sinh viên:</label>
+            <input type="text" id="sid" name="sid">
+            <button type="button" id="tracuu">Tra cứu</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã học phần</th>
+                    <th>Tên học phần</th>
+                    <th>Số tín chỉ</th>
+                    <th>Học kỳ</th>
+                    <th>Điểm số</th>
+                    <th>Điểm chữ quy đổi</th>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+    </main>
+    <script src="tracuu.js"></script>
+</body>
+
+</html>
