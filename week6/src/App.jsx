@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {  useState } from "react";
 //import reactLogo from "./assets/react.svg"
 //import viteLogo from "/vite.svg"
 import "./App.css";
 import ResultTable from "./components/ResultTable";
 import SearchForm from "./components/SearchForm";
-//import React, { useEffect } from "react"
+import { useEffect } from "react"
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -54,64 +54,94 @@ function App() {
   const [rows, setRows] = useState([]); //for result table
   const [loading, setLoading] = useState(false); //load statuxs
   const [error, setError] = useState("");
+  const [sidQuery, setSidQuery] = useState("");  //input
 
 
 
   async function handletracuu(sid) {
+    setSidQuery(String(sid).trim());
+  }
+//triggered by <SearchForm>
+//clean the entered ID n updates sidQuery
+//sidQuery changes=>triggers useEffect(below)
 
-    setError("");
-    setRows([]);
-    setLoading(true);
 
-    try {
-      const { sinhvien, hocphan, ketqua } = await loadData();
+  useEffect(() => {
+    
+    async function run(){
 
-      const sv = sinhvien.find((x) => String(x.sid) === String(sid)); //filtering
-      //const.find():returns the 1st matching element
-      //student object x
-      //thi is more strict in type than the og  //    const sv = ketquatable.sinhvien.find(sinhvien => sinhvien.sid == sid);
 
-      if (!sv) {
-        setError("Không tìm thấy sinh viên.");
-        setLoading(false); //obv
+      ///no sid ->clear everything n stop
+      if (!sidQuery) {
+        setRows([]);
+        setError("");
+        setLoading(false);
         return;
       }
 
-      const kqHienTai = ketqua.filter((x) => String(x.sid) === String(sid));
+      setLoading(true);
+      //clear b4 loading new
+      setError("");
+      setRows([]);
 
-      const builtRows = kqHienTai
-        .map((kq) => {
-          //1 kq=1 object of the table ketqua from json
-          const hp = hocphan.find((h) => String(h.cid) === String(kq.cid));
-          if (!hp) return null;
+      try {
+        const { sinhvien, hocphan, ketqua } = await loadData();
+        
 
-          const score = kq.score;
-          const graded =
-            typeof kq.grade === "string" && kq.grade.trim().length > 0; //better than the og  const graded = ketqua.grade && ketqua.grade.trim() !== "";
-          const letter = graded ? kq.grade : grading(score);
+        const sv = sinhvien.find((x) => String(x.sid) === String(sidQuery)); //filtering
+        //const.find():returns the 1st matching element
+        //student object x
+        //thi is more strict in type than the og  //    const sv = ketquatable.sinhvien.find(sinhvien => sinhvien.sid == sid);
 
-          return {
-            cid: hp.cid,
-            name: hp.name,
-            credits: hp.credits,
-            term: kq.term,
-            score: score,
-            grade: letter,
-          };
-        })
-        .filter(Boolean); //remove “falsey” values from an array: 0, "", null, undefined
-      // .filter(row => row !== null && row !== undefined);
+        if (!sv) {
+          setError("Không tìm thấy sinh viên.");
+          setLoading(false); //obv
+          return;
+        }
 
-      //
+        const kqHienTai = ketqua.filter((x) => String(x.sid) === String(sidQuery));
 
-      setRows(builtRows);
-    } catch (e) {
-      console.error(e);
-      setError("Có lỗi xảy ra khi tải dữ liệu.");
-    } finally {
-      setLoading(false);
+        const builtRows = kqHienTai
+          .map((kq) => {
+            //1 kq=1 obj of the table ketqua from json
+            const hp = hocphan.find((h) => String(h.cid) === String(kq.cid));
+            if (!hp) return null;
+
+            const score = kq.score;
+            const graded =
+              (typeof kq.grade === "string" )&&( kq.grade.trim().length > 0);
+              //better than the og  const graded = ketqua.grade && ketqua.grade.trim() !== "";
+            const letter = graded ? kq.grade : grading(score);
+
+            return {
+              cid: hp.cid,
+              name: hp.name,
+              credits: hp.credits,
+              term: kq.term,
+              score:score,
+              grade: letter,
+            };
+          })
+          .filter(Boolean);
+          //remove “falsey” values from an array: 0, "", null, undefined
+          // .filter(row => row !== null && row !== undefined);
+
+          //
+
+        setRows(builtRows);
+      } catch (e) {
+        console.error(e);
+        setError("Có lỗi xảy ra khi tải dữ liệu.");
+      } finally {
+        setLoading(false);
+      }
     }
-  }
+
+    /////
+    run();
+  }, [sidQuery]);
+
+
 
   return (
     <div style={{ maxWidth: 960, margin: "24px auto", padding: "0 16px" }}>

@@ -32,7 +32,7 @@ const ResultTable = ({ rows }) => {
         </thead>
         <tbody>
           {rows.map((r, idx) => (
-            <tr key={`${r.cid}-${idx}`}>
+            <tr key={`${r.cid}-${idx}`}>  {/*key prop*/}
               <td style={td}>{r.cid}</td>
               <td style={td}>{r.name}</td>
               <td style={tdCenter}>{r.credits}</td>
