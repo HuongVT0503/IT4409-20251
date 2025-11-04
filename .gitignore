@@ -15,3 +15,12 @@ Desktop.ini
 
 # Other temporary files
 *.log
+
+# Node / JS
+node_modules/
+dist/
+.build/
+.vite/
+*.log
+.DS_Store
+Thumbs.db
