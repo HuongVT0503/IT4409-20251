@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>week8</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/reactdom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!--JSX/REACT under-->
+    <script type="text/babel">
+
+
+
+        function App() {
+            const [kw, setKeyword] = React.useState(""); //string keyword
+            const [newUser, setNewUser] = React.useState(null); //obj user?
+
+
+            return (
+                <div>
+                    {/*list of props*/}
+                    <SearchForm onChangeValue={setKeyword} />
+                    <AddUser onAdd={setNewUser} />
+                    <ResultTable keyword={kw} newUser={newUser} onAdded={() => setNewUser(null)} />
+                </div>
+            );
+
+
+
+            function SearchForm({ onChangeValue }) { //child
+                return (
+                    <input
+                        type="text"
+                        placeholder="Tim theo name, username"
+                        onChange={(e) => onChangeValue(e.target.value)}
+                    />    //txt input 
+                    //we want to: 
+                    // when user input
+                    // -> call onChangeValue()
+                    // ->which makes App component updates kw
+                    // ->then ResultTable component re-renders with new kw
+                );
+            }
+
+
+            function ResultTable({ keyword, newUser, onAdded }) { //child
+
+                const [users, setUsers] = React.useState([]);
+                const [loading, setLoading] = React.useState(true);
+
+                React.useEffect(() => {
+                    fetch("https://jsonplaceholder.typicode.com/users")
+                        .then((res) => res.json())
+                        .then((data) => {
+                            setUsers(data);
+                            setLoading(false);
+                        });
+                }, []);//run once when mount
+
+                React.useEffect(() => {
+                    if (user) {
+                        setUsers((prev) => [...prev, { ...user, id: prev.length + 1 }]);
+                        onAdded();
+                    }
+                }, [user]);
+
+
+                const filteredUsers = users.filter((u) =>
+                    u.name.toLowerCase().includes(keyword.toLowerCase()) ||
+                    u.username.toLowerCase().includes(keyword.toLowerCase())
+                );//case insensitive
+
+                return (
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>City</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                {filteredUsers.map((u) => (
+                                    <tr key={u.id}>
+                                        <td>{u.id}</td>
+                                        <td>{u.name}</td>
+                                        <td>{u.username}</td>
+                                        <td>{u.email}</td>
+                                        <td>{u.address.city}</td>
+                                        {/*<td>
+                                             <button onClick={() => editUser(u)}>Sửa</button>
+                                            <button onClick={() => removeUser(u.id)}>Xóa</button>
+                                        </td>*/}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )
+
+            }
+
+
+            function AddUser({ onAdd }) { //child
+                const [adding, setAdding] = React.useState(false); //user click Addbutton?
+                const [user, setUser] = React.useState({
+                    name: "",
+                    username: "",
+                    email: "",
+                    address: { street: "", suite: "", city: "" },
+                    phone: "",
+                    website: ""
+                });
+
+
+                //handleChange
+                const handleChange = (e) => {
+                    const { id, value } = e.target;
+
+                    if (["street", "suite", "city"].includes(id)) {
+                        setUser({ ...user, address: { ...user.address, [id]: value } });
+                    } else {
+                        setUser({ ...user, [id]: value });
+                    }
+
+                };
+
+
+                //handleAdd
+                const handleAdd = () => {
+
+                    //empty
+                    if (user.name === "" || user.username === "") {
+                        alert("Vui long nhap name va username");
+                        return;
+                    }
+
+                    onAdd(user);
+                    setUser({
+                        name: "",
+                        username: "",
+                        email: "",
+                        address: { street: "", suite: "", city: "" },
+                        phone: "",
+                        website: ""
+                    });
+                    setAdding(false);
+
+
+                };
+
+                //UI
+                return (
+                    <div>
+                        <button onClick={() => setAdding(true)}>Them</button>
+                        {adding && (
+                            <div>
+                                <div id="add-name">
+                                    <h4>Them nguoi dung</h4>
+                                    <label htmlFor="name">Name: </label>
+                                    <input id="name" type="text" value={user.name} onChange={handleChange} />
+                                </div>
+                                <div id="add-username">
+                                    <label htmlFor="username">Username: </label>
+                                    <input id="username" type="text" value={user.username} onChange={handleChange} />
+                                </div>
+                                <div id="add-email">
+                                    <label htmlFor="email">Email: </label>
+                                    <input id="email" type="text" value={user.email} onChange={handleChange} />
+                                </div>
+                                <div id="add-address">
+                                    <label htmlFor="street">Street: </label>
+                                    <input id="street" type="text" value={user.address.street} onChange={handleChange} />
+                                    <label htmlFor="suite">Suite: </label>
+                                    <input id="suite" type="text" value={user.address.suite} onChange={handleChange} />
+                                    <label htmlFor="city">City: </label>
+                                    <input id="city" type="text" value={user.address.city} onChange={handleChange} />
+                                </div>
+                                <div id="add-phone">
+                                    <label htmlFor="phone">Phone: </label>
+                                    <input id="phone" type="text" value={user.phone} onChange={handleChange} />
+                                </div>
+                                <div id="add-website">
+                                    <label htmlFor="website">Website: </label>
+                                    <input id="website" type="text" value={user.website} onChange={handleChange} />
+                                </div>
+                                <button onClick={handleAdd}>Them</button>
+
+                            </div>
+                        )}
+                    </div>
+                );
+
+
+
+
+
+            };
+
+
+
+
+
+
+
+
+        }
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
