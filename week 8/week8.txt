@@ -1,0 +1,9 @@
+button edit có class name: btn-edit. đổi nó sang màu xanh bằng cách background-color: seagreen; color:white;
+button delete có class name: btn-delete. đổi nó sang màu đỏ bằng cách background-color: red; color:white;
+
+căn chỉnh nội dung toàn bộ trang ra giữa:  
+    #root{
+        display:flex;
+            margin:auto;
+            align-items: center;
+        }
